@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LD SERVICES — Rénovation • Dépannage • Entretien</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0f1b2e;
+        }
+
+        /* HEADER STICKY */
+        header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 50px;
+            padding: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+            max-width: 300px;
+        }
+
+        header .contact-item {
+            color: #333;
+        }
+
+        header .contact-item:hover {
+            color: #7a9b9e;
+        }
+
+        header .contact-item span:first-child {
+            color: #7a9b9e;
+        }
+
+        header .contact-item span:last-child {
+            color: #666;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 3px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: #7a9b9e;
+            border-bottom-color: #7a9b9e;
+        }
+
+        .contact-info-header {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-size: 0.9em;
+        }
+
+        .contact-item {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item:hover {
+            color: #7a9b9e;
+        }
+
+        .contact-item span:first-child {
+            font-weight: 700;
+            display: block;
+            color: #7a9b9e;
+        }
+
+        .contact-item span:last-child {
+            display: inline;
+            color: #666;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0f1b2e 0%, #1a2c40 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(122, 155, 158, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3.2em;
+            margin-bottom: 12px;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.15em;
+            color: #7a9b9e;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+            border-bottom: 1px solid rgba(122, 155, 158, 0.3);
+            padding-bottom: 30px;
+        }
+
+        .hero .cta-button {
+            background: linear-gradient(135deg, #7a9b9e 0%, #5a8186 100%);
+            color: white;
+            padding: 16px 50px;
+            font-size: 1.05em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+        }
+
+        .hero .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(122, 155, 158, 0.3);
+        }
+
+        /* STATS */
+        .stats {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: -50px auto 0;
+            position: relative;
+            z-index: 10;
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+            border: 1px solid rgba(122, 155, 158, 0.2);
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            border-left: 4px solid #7a9b9e;
+        }
+
+        .stat-number {
+            font-size: 3.5em;
+            color: #0f1b2e;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1em;
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        /* SERVICES */
+        section {
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: white;
+            margin-bottom: 50px;
+            font-weight: 800;
+        }
+
+        #services h2 {
+            color: white;
+        }
+
+        #services .section-subtitle {
+            color: #7a9b9e;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-subtitle {
+            color: #7a9b9e;
+            font-size: 1.05em;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card-pro {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px 35px;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(122, 155, 158, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card-pro::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(122, 155, 158, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .service-card-pro:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(122, 155, 158, 0.2);
+            border-color: rgba(122, 155, 158, 0.4);
+        }
+
+
+
+        .service-card-pro h3 {
+            color: #0f1b2e;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-features li {
+            color: #555;
+            font-size: 0.9em;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #7a9b9e;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        /* INCLUDED SECTION */
+        .included-section {
+            background: white;
+            padding: 80px 40px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .included-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 20px;
+        }
+
+        .check-icon {
+            font-size: 1.8em;
+            color: #7a9b9e;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        #included .check-text {
+            color: #333;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        /* ABOUT */
+        #about {
+            background: transparent;
+            color: white;
+            padding: 80px 40px;
+        }
+
+        #about h2 {
+            color: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-text {
+            text-align: left;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1em;
+            color: #ccc;
+        }
+
+        .about-features {
+            margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1em;
+            color: #ccc;
+        }
+
+        .feature-item strong {
+            color: #7a9b9e;
+        }
+
+        .feature-icon {
+            font-size: 1.8em;
+            flex-shrink: 0;
+        }
+
+        /* ADVANTAGES */
+        #advantages {
+            background: white;
+            color: #333;
+            padding: 80px 40px;
+        }
+
+        #advantages h2 {
+            color: #0f1b2e;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cert-box {
+            background: #f5f5f5;
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            border-left: 5px solid #7a9b9e;
+        }
+
+        .cert-box strong {
+            background: linear-gradient(135deg, #7a9b9e 0%, #5a8186 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .cert-box strong::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .cert-box p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.98em;
+            margin-top: 15px;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            background: transparent;
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .contact-info {
+            text-align: left;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border: 1px solid rgba(122, 155, 158, 0.2);
+        }
+
+        .contact-info-list {
+            text-align: left;
+        }
+
+        .contact-info .contact-item {
+            margin-bottom: 25px;
+            text-align: left;
+            font-size: 0.95em;
+        }
+
+        .contact-info .contact-item strong {
+            color: #7a9b9e;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .contact-info .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 35px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(122, 155, 158, 0.2);
+        }
+
+        .contact-form h3 {
+            color: #7a9b9e;
+            background: transparent;
+            padding: 0;
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            border: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ccc;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(122, 155, 158, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border-radius: 6px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input[type="file"] {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .form-group input[type="file"]::file-selector-button {
+            padding: 8px 16px;
+            margin-right: 10px;
+            background: linear-gradient(135deg, #7a9b9e 0%, #5a8186 100%);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .form-group input[type="file"]::file-selector-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(122, 155, 158, 0.3);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #7a9b9e;
+            background: rgba(122, 155, 158, 0.1);
+            box-shadow: 0 0 15px rgba(122, 155, 158, 0.2);
+        }
+
+        .form-group button {
+            background: linear-gradient(135deg, #7a9b9e 0%, #5a8186 100%);
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(122, 155, 158, 0.3);
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #7a9b9e 0%, #5a8186 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            color: #333;
+            padding: 60px 40px 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: #0f1b2e;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-section a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #7a9b9e;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cert-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .included-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 12px 25px;
+                background: white;
+            }
+
+            nav {
+                gap: 25px;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 0.85em;
+                color: #333;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .logo img {
+                height: 40px;
+                max-width: 250px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .section-container {
+                padding: 0 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card-pro {
+                padding: 30px 25px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .included-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2em;
+                color: white;
+            }
+
+            #services h2 {
+                color: white;
+            }
+
+            #advantages h2 {
+                color: #0f1b2e;
+            }
+
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 15px;
+                background: white;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 0.75em;
+                color: #333;
+            }
+
+            .logo {
+                height: 35px;
+            }
+
+            .logo img {
+                height: 35px;
+                max-width: 180px;
+            }
+
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .hero h1 {
+                font-size: 1.6em;
+                line-height: 1.3;
+                margin-bottom: 12px;
+            }
+
+            .hero p {
+                font-size: 0.95em;
+                margin-bottom: 20px;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 0.85em;
+            }
+
+            section {
+                padding: 40px 15px;
+            }
+
+            .section-container {
+                padding: 0 15px;
+            }
+
+            .service-card-pro {
+                padding: 25px 20px;
+            }
+
+            .included-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .included-item {
+                padding: 15px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 25px 15px;
+                margin-top: -20px;
+            }
+
+            .stat-number {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                margin-bottom: 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-info-header {
+                gap: 10px;
+                font-size: 0.7em;
+            }
+
+            .contact-item span:last-child {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo"><img src="logo-ld-services.png" alt="LD SERVICES"></a>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#about">À Propos</a>
+            <a href="#advantages">Avantages</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="contact-info-header">
+            <a href="tel:0471104004" class="contact-item">
+                <span>Tél</span>
+                <span>0471/10.40.04</span>
+            </a>
+            <a href="mailto:ldservicesrenovations@gmail.com" class="contact-item">
+                <span>Email</span>
+                <span>ldservicesrenovations@gmail.com</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>Experts en Rénovation & Entretien</h1>
+        <p>Patron sur Chantier - Devis Gratuit et Sans Engagement</p>
+        <button class="cta-button">Demander un Devis Gratuit</button>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat-box stat-animated">
+            <div class="stat-number" data-target="245" data-suffix="+">0</div>
+            <div class="stat-label">Projets Réalisés</div>
+        </div>
+        <div class="stat-box stat-animated">
+            <div class="stat-number" data-target="98" data-suffix="%">0</div>
+            <div class="stat-label">de Clients Satisfait</div>
+        </div>
+        <div class="stat-box stat-animated">
+            <div class="stat-number" data-target="15" data-suffix=" ans">0</div>
+            <div class="stat-label">d'Expérience</div>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services">
+        <div class="section-container">
+            <h2>Nos Services</h2>
+            <p class="section-subtitle">Solutions complètes pour tous vos besoins</p>
+            
+            <div class="services-grid">
+                <div class="service-card-pro">
+                    <h3>Rénovation Intérieur-Extérieur</h3>
+                    <ul class="service-features">
+                        <li>Peinture & revêtements</li>
+                        <li>Menuiserie & isolation</li>
+                        <li>Façade & toiture</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card-pro">
+                    <h3>Chauffage & Sanitaire</h3>
+                    <ul class="service-features">
+                        <li>Chaudière gaz</li>
+                        <li>Pompe à chaleur</li>
+                        <li>Poêle à pellet</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card-pro">
+                    <h3>Dépannage Rapide</h3>
+                    <ul class="service-features">
+                        <li>Chauffage & plomberie</li>
+                        <li>Installation d'urgence</li>
+                        <li>Diagnostic rapide</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card-pro">
+                    <h3>Aménagement Extérieur</h3>
+                    <ul class="service-features">
+                        <li>Paysagement & design</li>
+                        <li>Entretien régulier</li>
+                        <li>Allées & terrasses</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CE QUI EST INCLUS -->
+    <section id="included" class="included-section">
+        <div class="section-container">
+            <h2 style="color: #0f1b2e; border: none; background: transparent; padding: 0; width: auto; text-align: left; margin-bottom: 35px; font-size: 1.4em; margin: 0 0 35px 0; font-weight: 700;">Ce qui est inclus dans nos services :</h2>
+            
+            <div class="included-grid">
+                <div class="included-item">
+                    <span class="check-icon">✓</span>
+                    <span class="check-text">Expertise reconnue avec 15 ans d'expérience</span>
+                </div>
+                <div class="included-item">
+                    <span class="check-icon">✓</span>
+                    <span class="check-text">Patron présent sur tous les chantiers</span>
+                </div>
+                <div class="included-item">
+                    <span class="check-icon">✓</span>
+                    <span class="check-text">Devis gratuit et sans engagement</span>
+                </div>
+                <div class="included-item">
+                    <span class="check-icon">✓</span>
+                    <span class="check-text">Conformité Gaz CERGA garantie</span>
+                </div>
+                <div class="included-item">
+                    <span class="check-icon">✓</span>
+                    <span class="check-text">Travaux de qualité professionnelle</span>
+                </div>
+                <div class="included-item">
+                    <span class="check-icon">✓</span>
+                    <span class="check-text">Satisfaction client 98% validée</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>Qui Sommes-Nous</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>LD SERVICES est votre expert en rénovation, chauffage et dépannage depuis 15 ans. Avec un patron présent sur chaque chantier, nous garantissons une qualité professionnelle inégalée.</p>
+                <p>Notre engagement : des devis gratuits, une intervention rapide 24h/24, et une conformité Gaz CERGA stricte pour tous vos travaux de chauffage.</p>
+            </div>
+            <div class="about-features">
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <strong>15 ans</strong> d'expérience reconnue
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <strong>245+</strong> projets réalisés avec succès
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <strong>98%</strong> de satisfaction client validée
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✓</span>
+                    <strong>Disponibilité 24h</strong> pour dépannages
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADVANTAGES -->
+    <section id="advantages">
+        <h2>Nos Avantages</h2>
+        <div class="cert-grid">
+            <div class="cert-box">
+                <strong>Patron sur Chantier</strong>
+                <p>Assurance qualité maximale avec la présence du patron sur chaque intervention. Suivi personnalisé de vos travaux du début à la fin.</p>
+            </div>
+            <div class="cert-box">
+                <strong>Devis Gratuit & Sans Engagement</strong>
+                <p>Consultez-nous sans frais pour évaluer vos besoins. Transparence totale sur les coûts avant validation du projet.</p>
+            </div>
+            <div class="cert-box">
+                <strong>Conformité Gaz CERGA</strong>
+                <p>Tous nos travaux respectent les normes CERGA. Certifications et garanties d'installation sécurisée pour chauffage & gaz.</p>
+            </div>
+            <div class="cert-box">
+                <strong>Polyvalent & Fiable</strong>
+                <p>Rénovation, chauffage, sanitaire et dépannage : une seule équipe pour tous vos besoins. Intervention rapide 24h.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+        <h2>Nous Contacter</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-info-list">
+                    <div class="contact-item">
+                        <strong>📞 Téléphone</strong>
+                        <a href="tel:+32471104004">0471/10.40.04</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📧 Email</strong>
+                        <a href="mailto:ldservicesrenovations@gmail.com">ldservicesrenovations@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>⏰ Disponibilité</strong>
+                        <span>Lun-Sam : 10h-18h<br>Dépannage 24h</span>
+                    </div>
+                </div>
+            </div>
+            <form id="contactForm" class="contact-form" method="POST" action="https://formsubmit.co/ldservicesrenovations@gmail.com">
+                <h3>Demander un Devis</h3>
+                <div id="successMessage" class="success-message">
+                    ✓ Merci ! Nous vous contacterons très bientôt.
+                </div>
+                <input type="hidden" name="_next" value="">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                    <label>Votre Nom</label>
+                    <input type="text" name="name" required placeholder="Jean Dupont">
+                </div>
+                <div class="form-group">
+                    <label>Téléphone</label>
+                    <input type="tel" name="phone" required placeholder="0471/XX.XX.XX">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required placeholder="votre@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Type de Travaux</label>
+                    <select name="type-travaux" required>
+                        <option value="">Sélectionnez...</option>
+                        <option value="renovation">Rénovation Intérieur</option>
+                        <option value="renovation-ext">Rénovation Extérieur</option>
+                        <option value="chauffage">Chauffage & Sanitaire</option>
+                        <option value="depannage">Dépannage Urgent</option>
+                        <option value="jardin">Aménagement Jardin</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Photo du Problème (Optionnel)</label>
+                    <input type="file" name="photo" accept="image/*" placeholder="Télécharger une photo">
+                    <small style="color: #999; display: block; margin-top: 8px;">JPG, PNG ou GIF - Max 5 MB</small>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" required placeholder="Décrivez vos besoins..." rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Demander un Devis</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Services</h4>
+                <a href="#services">Rénovation</a>
+                <a href="#services">Chauffage & Sanitaire</a>
+                <a href="#services">Dépannage Rapide</a>
+                <a href="#services">Aménagement Extérieur</a>
+            </div>
+            <div class="footer-section">
+                <h4>À Propos</h4>
+                <a href="#about">Qui sommes-nous</a>
+                <a href="#advantages">Nos avantages</a>
+                <a href="#contact">Nous contacter</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <a href="tel:+32471104004">0471/10.40.04</a>
+                <a href="mailto:ldservicesrenovations@gmail.com">ldservicesrenovations@gmail.com</a>
+                <a href="#">Disponibilité 24h</a>
+            </div>
+        </div>
+        <div class="footer-bottom" style="color: #999;">
+            <p>&copy; 2024 LD SERVICES — Rénovation • Dépannage • Entretien</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation des stats au scroll
+        function animateCounter(element, target, suffix = '+', duration = 2000) {
+            const startValue = 0;
+            const startTime = Date.now();
+            
+            function updateCounter() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const currentValue = Math.floor(progress * target);
+                element.textContent = currentValue + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+            updateCounter();
+        }
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('count-active')) {
+                    entry.target.classList.add('count-active');
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    const target = parseInt(statNumber.getAttribute('data-target'));
+                    const suffix = statNumber.getAttribute('data-suffix') || '+';
+                    animateCounter(statNumber, target, suffix);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.stat-animated').forEach(stat => {
+            statsObserver.observe(stat);
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            const form = this;
+            const fileInput = form.querySelector('input[type="file"]');
+            if (fileInput && fileInput.files.length > 0) {
+                alert('Note: La photo ne peut pas être envoyée via ce formulaire. Veuillez envoyer la photo séparément à ldservicesrenovations@gmail.com');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.borderBottomColor = 'transparent';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.borderBottomColor = '#7a9b9e';
+                    link.style.color = '#7a9b9e';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
