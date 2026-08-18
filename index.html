@@ -1383,7 +1383,9 @@
     <header>
         <a href="#" class="logo"><img src="logo-ld-services.png" alt="LD SERVICES"></a>
         <nav>
+            <a href="#">Accueil</a>
             <a href="#services">Services</a>
+            <a href="realisations.html">Réalisations</a>
             <a href="#about">À Propos</a>
             <a href="#advantages">Avantages</a>
             <a href="#contact">Contact</a>
@@ -1729,7 +1731,7 @@
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('nav a');
-            
+
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -1738,11 +1740,26 @@
                 }
             });
 
+            // Vérifier si on est sur une page externe comme realisations.html
+            const currentPageName = window.location.pathname.split('/').pop() || 'index.html';
+
             navLinks.forEach(link => {
                 link.style.borderBottomColor = 'transparent';
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.style.borderBottomColor = '#7a9b9e';
-                    link.style.color = '#7a9b9e';
+                const href = link.getAttribute('href');
+
+                // Vérifier si c'est un lien vers une page externe
+                if (href.endsWith('.html') && !href.startsWith('#')) {
+                    // Comparer avec le nom de page actuelle
+                    if (href === currentPageName || (currentPageName === '' && href === 'index.html')) {
+                        link.style.borderBottomColor = '#7a9b9e';
+                        link.style.color = '#7a9b9e';
+                    }
+                } else if (href.startsWith('#')) {
+                    // Logique existante pour les ancres
+                    if (href.slice(1) === current) {
+                        link.style.borderBottomColor = '#7a9b9e';
+                        link.style.color = '#7a9b9e';
+                    }
                 }
             });
         });
