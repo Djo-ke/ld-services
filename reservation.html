@@ -640,15 +640,13 @@
 <body>
     <!-- HEADER -->
     <header>
-        <a href="#" class="logo">
-            <img src="./ld-logo.jpg" alt="LD SERVICES Logo">
+        <a href="index.html" class="logo">
+            <img src="./ld-logo.png" alt="LD SERVICES Logo">
         </a>
         <nav>
             <a href="index.html">Accueil</a>
             <a href="reservation.html" class="active">Réservation</a>
             <a href="#services">Services</a>
-            <a href="#calendar">Réservations</a>
-            <a href="#contact">Contact</a>
         </nav>
         <div class="contact-info-header">
             <a href="tel:0471104004" class="contact-item">
@@ -699,8 +697,8 @@
             <div class="calendar-info">
                 <div class="info-box">
                     <h4>ℹ️ Disponibilités</h4>
-                    <p><strong>Lun - Sam:</strong> 10h00 - 18h00</p>
-                    <p><strong>Dim:</strong> Fermé</p>
+                    <p><strong>Lun - Ven:</strong> 8h00 - 17h00</p>
+                    <p><strong>Sam - Dim:</strong> Fermé</p>
                     <p style="margin-top: 15px; font-size: 0.9em;">Les cases <strong>noires</strong> = dates réservées</p>
                 </div>
 
@@ -755,6 +753,23 @@
                 <div class="form-group">
                     <label for="date">Date Souhaitée *</label>
                     <input type="text" id="date" name="date" readonly placeholder="Sélectionnez une date sur le calendrier">
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Heure Souhaitée (8h - 17h) *</label>
+                    <select id="time" name="time" required>
+                        <option value="">-- Sélectionnez une heure --</option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -834,7 +849,8 @@
                 const dateObj = new Date(year, month, day);
                 const isToday = dateObj.toDateString() === new Date().toDateString();
                 const isReserved = reservedDates.some(d => d.toDateString() === dateObj.toDateString());
-                const isDimanche = dateObj.getDay() === 0;
+                const dayOfWeek = dateObj.getDay(); // 0=dimanche, 1=lundi... 6=samedi
+                const isClosed = dayOfWeek === 0 || dayOfWeek === 6; // Dimanche ou Samedi fermé
 
                 if (isToday) {
                     dayElement.classList.add('today');
@@ -845,7 +861,7 @@
                     dayElement.style.cursor = 'not-allowed';
                 }
 
-                if (isDimanche) {
+                if (isClosed) {
                     dayElement.classList.add('disabled');
                 }
 
@@ -853,7 +869,7 @@
                     dayElement.classList.add('selected');
                 }
 
-                if (!isReserved && !isDimanche) {
+                if (!isReserved && !isClosed) {
                     dayElement.addEventListener('click', () => {
                         selectedDate = dateObj;
                         renderCalendar();
