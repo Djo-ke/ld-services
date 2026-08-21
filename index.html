@@ -1702,14 +1702,13 @@
                     </div>
                 </div>
             </div>
-            <form id="contactForm" class="contact-form" method="POST" action="https://formsubmit.co/ldservicesrenovations@gmail.com" enctype="multipart/form-data">
+            <form id="contactForm" class="contact-form" method="POST" action="https://formsubmit.co/ldservicesrenovations@gmail.com">
                 <h3>Demander un Devis</h3>
                 <div id="successMessage" class="success-message">
                     ✓ Merci ! Nous vous contacterons très bientôt.
                 </div>
+                <input type="hidden" name="_next" value="">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="Nouvelle demande de devis - LD SERVICES">
-                <input type="hidden" name="_template" value="table">
                 <div class="form-group">
                     <label>Votre Nom</label>
                     <input type="text" name="name" required placeholder="Jean Dupont">
@@ -1736,8 +1735,8 @@
                 </div>
                 <div class="form-group">
                     <label>Photo du Problème</label>
-                    <input type="file" name="attachment" accept="image/*" multiple>
-                    <small style="color: #999; display: block; margin-top: 8px;">JPG, PNG ou GIF - Max 5 MB au total (plusieurs photos possibles)</small>
+                    <input type="file" name="photo" accept="image/*" placeholder="Télécharger une photo">
+                    <small style="color: #999; display: block; margin-top: 8px;">JPG, PNG ou GIF - Max 5 MB</small>
                 </div>
                 <div class="form-group">
                     <label>Choisir une date</label>
