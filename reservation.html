@@ -33,14 +33,6 @@
             border-bottom: 1px solid #e0e0e0;
         }
 
-        .header-logo {
-            height: 50px;
-            width: auto;
-            max-width: 300px;
-            display: block;
-            image-rendering: -webkit-optimize-contrast;
-        }
-
         header .contact-item {
             color: #333;
         }
@@ -569,7 +561,6 @@
 <body>
     <!-- HEADER -->
     <header>
-        <img src="./ld-logo-full.jpg" alt="LD SERVICES" class="header-logo">
         <nav>
             <a href="index.html">Accueil</a>
             <a href="reservation.html" class="active">Réservation</a>
@@ -725,16 +716,45 @@
         let selectedDate = null;
 
         // Dates réservées (exemples) - À connecter à Google Calendar après
-        const reservedDates = [
-            new Date(2026, 7, 3),   // 3 août
-            new Date(2026, 7, 5),   // 5 août
-            new Date(2026, 7, 8),   // 8 août
-            new Date(2026, 7, 12),  // 12 août
-            new Date(2026, 7, 15),  // 15 août
-            new Date(2026, 7, 19),  // 19 août
-            new Date(2026, 7, 22),  // 22 août
-            new Date(2026, 7, 26),  // 26 août
-        ];
+        const reservedDates = [];
+        const googleCalendarIcalUrl = "https://calendar.google.com/calendar/ical/ldservicesrenovations%40gmail.com/private-1336abec094b55cbdb698e26d5b95bdd/basic.ics";
+
+        // Charger les événements depuis Google Calendar (URL privée - pas de CORS)
+        async function chargerReservationsGoogle() {
+            try {
+                const response = await fetch(googleCalendarIcalUrl);
+                const icsText = await response.text();
+                
+                // Parser les dates depuis le format iCal
+                const lines = icsText.split('\n');
+                for (let i = 0; i < lines.length; i++) {
+                    if (lines[i].startsWith('DTSTART')) {
+                        // Format: DTSTART:20260822T100000Z ou DTSTART;VALUE=DATE:20260822
+                        const dateStr = lines[i].match(/(\d{4})(\d{2})(\d{2})/);
+                        if (dateStr) {
+                            const year = parseInt(dateStr[1]);
+                            const month = parseInt(dateStr[2]) - 1;
+                            const day = parseInt(dateStr[3]);
+                            const dateObj = new Date(year, month, day);
+                            
+                            // Vérifier que ce n'est pas un doublon
+                            if (!reservedDates.some(d => d.toDateString() === dateObj.toDateString())) {
+                                reservedDates.push(dateObj);
+                            }
+                        }
+                    }
+                }
+                
+                console.log("✅ Événements Google Calendar chargés:", reservedDates.length);
+                renderCalendar();
+            } catch (error) {
+                console.log("ℹ️ Erreur chargement Google Calendar:", error.message);
+                renderCalendar();
+            }
+        }
+        
+        // Charger au démarrage
+        chargerReservationsGoogle();
 
         function renderCalendar() {
             const year = currentDate.getFullYear();
